@@ -1,0 +1,1 @@
+export const breadcrumbTitleAdjustment = (title: string) => title.replaceAll("-", " ");

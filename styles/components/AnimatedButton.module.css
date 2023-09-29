@@ -1,0 +1,60 @@
+.button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    color: var(--white);
+    
+    position: relative;
+    --button-size: 62px;
+    height: var(--button-size);
+}
+
+.background {
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 1;
+
+    transition: all .6s ease-in-out;
+
+    display: flex;
+    align-items: center;
+    
+    border-radius: calc(var(--button-size) / 2 );
+
+    background-color: var(--primary-color);
+    width: var(--button-size);
+}
+
+.background:hover, .active {
+    width: 256px;
+}
+
+.spanActive {
+    opacity: 1 !important;
+}
+
+.text {
+    font-weight: 600;
+    font-size: 1.25rem;
+
+    opacity: 0;
+    white-space: nowrap;
+    transition: all .6s ease-in-out;
+}
+
+.background:hover .text {
+    opacity: 1;
+}
+
+.pokeball {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+    min-width: var(--button-size);
+    height: var(--button-size);
+    background-color: var(--primary-color);
+}

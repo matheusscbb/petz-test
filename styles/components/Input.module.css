@@ -1,0 +1,49 @@
+.container {
+  --input-font-size: 1.06rem;
+
+  position: relative;
+}
+  
+.input, .select {
+    width: 100%;
+    padding: 14px;
+    border-radius: 8px;
+    border: 1px solid var(--gray);
+
+    font-size: var(--input-font-size);
+    outline: none;
+    
+    position: relative;
+}
+  
+.input:focus {
+    border-color: var(--black-ligth);
+}
+
+.selectContainer {
+    position: relative;
+  }
+  
+.select {
+    cursor: pointer;
+    appearance: none;
+
+    width: 100%;
+    color: var(--gray-dark);
+    background-color: var(--white);
+}
+  
+.select::after {
+    content: '\25BC';
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+}
+
+.customOption {
+    margin-top: -10px;
+    cursor: pointer;
+    font-size: var(--input-font-size);
+}
+  

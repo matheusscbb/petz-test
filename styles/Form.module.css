@@ -1,0 +1,115 @@
+.main {
+    --input-width: 265px;
+    --input-width-large: 438px;
+
+    --gap-size: 32px;
+
+    flex: 1;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.container {
+    padding-top: 32px;
+    margin-bottom: 72px;
+    
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.container h3 {
+    font-size: 1.5rem;
+}
+
+.form {
+    width: 548px;
+}
+
+.personal {
+    gap: 18px;
+    row-gap: var(--gap-size);
+    display: grid;
+    margin: var(--gap-size) 0;
+    grid-template-rows: repeat(1, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.personal label, .pokemonsArea h5 {
+    display: block;
+    font-weight: 700;
+    font-size: .875rem;
+    padding-bottom: 8px;
+}
+
+.plus {
+    font-size: .775rem;
+    padding-left: 10px;
+}
+
+.pokemonsArea span {
+    display: block;
+    font-weight: 500;
+    font-size: .875rem;
+    
+    padding-bottom: 16px;
+    
+    color: var(--gray-dark);
+}
+
+.pokemonsInputs {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding-bottom: var(--gap-size);
+}
+
+.pokemonsInputs label {
+    margin-right: 38px;
+}
+
+.pokemonsInputs div {
+    flex: 1;
+}
+
+.separador {
+    height: 1px;
+    width: 100%;
+    background-color: var(--gray-dark);
+}
+
+.resume {
+    display: grid;
+    grid-template-rows: auto auto;
+    grid-template-columns: 1fr auto;
+
+    padding-top: var(--gap-size);
+}
+.resume span {
+    font-size: .875rem;
+    color: var(--gray-dark);
+
+    padding-bottom: 8px;
+}
+
+.resume span:nth-child(even) {
+    text-align: right;
+}
+
+.fees {
+    font-size: .5rem;
+    color: var(--gray-dark);
+}
+
+.total {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    color: var(--black-ligth);
+    padding-top: var(--gap-size);
+}

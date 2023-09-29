@@ -1,0 +1,23 @@
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    color: var(--black);
+
+    padding: 0 83px;
+    background-color: var(--white);
+    height: var(--home-header-height);
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav a {
+    font-weight: 400;
+    font-size: .875rem;
+    margin-right: 30px;
+}

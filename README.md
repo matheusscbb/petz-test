@@ -1,67 +1,50 @@
 # PETZ
- 
+
 Teste técnico para desenvolvimento frontend – React/NextJS.
 
 ## Setup
 
-Instale as dependências do código com seu gerenciador de pacotes favorito.
-
 ```shell
-npm i
 yarn 
 ```
 
 ## Inicie o projeto
+
 ```shell
-npm run dev
 yarn dev
+```
+
+## Executar tests
+
+```shell
+yarn test:ci
 ```
 
 ## Objetivo
 
 Desenvolver um web app em Typescript, a partir deste projeto nextjs (clone o repositório e desenvolva em cima dele), que implemente o design descrito na próxima seção.
 
-### Requisitos
-- Criar um código desacoplado, organizado e testável
-- Escrever testes unitários com jest e react-testing-library
-- Demonstrar conhecimento do uso de hooks
-- Demonstrar conhecimento de modularização de componentes
-- Utilizar CSS (puro, in js – styled components / emotion, como preferir) ou Sass para estilizar as páginas
-- Demonstrar organização, desacoplamento e separação de responsabilidades no código; o uso de padrões arquiteturais como MVVM, CLEAN, etc., é bem-vindo
-- Demonstrar conhecimento de TypeScript e suas features para organizar o projeto
-- Tratar possíveis erros de API
+### Considerações finais
 
-Configurar as bibliotecas e o projeto para fazer os testes unitários também é parte do desafio.
+* Primeiro gostaria de me desculpar, neste últimos 7 dias tive problemas com minha mudança, além do tempo dedicado ao final do meu projeto atual. *
+Tentei demostrar uma certa variedade e isso influenciou em quais pontos eu completei, espero que seja suficiente para a avaliação, gostaria muito de voltar a trabalhar no brasil em uma empresa grande onde posso crescer e evoluir junto a ela.
 
-### Diferencial
-- Demonstrar conhecimentos de técnicas específicas de NextJS para lidar com estilos, server-side rendering, code splitting, etc. 
+## Api
 
-### Uso de APIs
-- Usar `http://localhost:3000/api/scheduling/date` para puxar as datas disponíveis para agendamento
-- Usar `htttp://localhost:3000/api/scheduling/time` para puxar os horários disponíveis para agendamento
-- Usar a [pokéAPI](https://pokeapi.co/) para trazer os dados de região, cidades, e pokémons a serem usados no agendamento
+Gostaria de ter me aprofundado mais nos tratamentos de erros e na criação de testes para a API, inclusive adicionar estados de erros e/ou instabilidade para a tela de formulário.
 
-Entender o contrato das APIs é também parte do teste.
+## O uso do useContext
 
-### Entrega
-O prazo para entrega é de **07 dias**. Responda o e-mail do teste com o link para o repositório público onde você armazenar seu código.
+Apesar de um formulário simples e do possível uso de useState ser suficiente, achei melhor preparar o código como se houvesse algo mais a ser demonstrado sobre o uso de um hook para gerenciar estados mais complexos.
 
-## Design a Ser Implementado
-O site deve implementar o design descrito nas telas abaixo. Todas as imagens necessárias estão na pasta `./public/images`.
+## Tests
 
-A fonte utilizada em todas as páginas, e inclusive no logo, é chamada `Inter` e está disponível no Google Fonts.
+Realizei testes de acordo com o desenvolvimento. Na etapa final do projeto, optei por sacrificar os testes para tentar avançar o máximo possível com o projeto como um todo.
 
-Este figma pode ser utilizado para consulta: https://www.figma.com/file/WU8hciI3zIX5RARW6nvs4i/Untitled?node-id=109%3A131&t=xBBhYvrgvf6H9On7-1
+## Form
 
-### Home
-![home page](public/test-sample/Home.png)
-Obs: O logo deve seguir o seguinte comportamento, iniciando expandido na home, e reduzindo após 05 segundos, da direita para a esquerda. Ele deve estar na forma reduzida nas demais páginas, abrindo no hover do mouse:
-![](public/test-sample/logo-behavior.png)
-### Quem Somos
-![](public/test-sample/Quem%20Somos.png)
-### Agendar Consulta
-![](public/test-sample/Agendar%20Consulta.png)
-#### Caso de Sucesso
-![](public/test-sample/Agendar%20Consulta%20Sucesso.png)
-#### Caso de Falha
-![](public/test-sample/Agendar%20Consulta%20Falha.png)
+Os próximos passos seriam adicionar a validação para garantir que todos os campos estejam preenchidos e implementar a funcionalidade de envio do formulário.
+
+## Taxa
+
+Não encontrei um endpoint que contivesse todas as informações sobre o Pokémon. Minha solução seria criar uma requisição para descobrir as gerações dos Pokémons com base na seleção, uma a uma.

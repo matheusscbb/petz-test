@@ -1,0 +1,1 @@
+export const __VALUE_PER_POKEMON = 70;

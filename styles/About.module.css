@@ -1,0 +1,25 @@
+.main {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.container {
+    width: 408px;
+    padding-top: 32px;
+    margin-bottom: 72px;
+}
+
+.container h3, .container h4, .container p {
+    margin: 1rem 0;
+}
+
+.container h4 {
+    font-weight: 500;
+}
+
+.container p {
+    font-size: .875rem;
+}
