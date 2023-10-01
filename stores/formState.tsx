@@ -30,6 +30,7 @@ interface FormProps {
   errors: ErrorsProps;
   name: string;
   surname: string;
+  generation: number;
 }
 
 const INITIAL_STATE: any = {
@@ -48,6 +49,7 @@ const INITIAL_STATE: any = {
   name: "",
   surname: "",
   errors: {} as ErrorsProps,
+  generation: 1,
 };
 
 const FormContext = createContext(INITIAL_STATE);
@@ -156,11 +158,6 @@ const reducer = (state: FormProps, action: any): FormProps => {
             ...state.pokemonSelected,
             [action?.payload?.id]: selected?.value,
           };
-          // A not-so-optimal way to apply, but I don't have time to fix the form
-          obj.completePokemonSelected = {
-            ...state.pokemonSelected,
-            [action?.payload?.id]: selected?.value,
-          };
           break;
         case "date":
           obj.dateSelected = state.date.find(
@@ -176,10 +173,15 @@ const reducer = (state: FormProps, action: any): FormProps => {
         default:
           break;
       }
-
       return {
         ...state,
         ...obj,
+      };
+
+    case "SET_GENERATION":
+      return {
+        ...state,
+        generation: action?.payload?.generation,
       };
 
     default:

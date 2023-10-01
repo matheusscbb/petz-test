@@ -3,3 +3,7 @@ export interface IAbout {
     title: string;
     description: string;
 }
+
+export interface StringNumberMap {
+    [key: string]: number;
+}

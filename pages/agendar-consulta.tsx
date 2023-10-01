@@ -2,7 +2,13 @@ import { useEffect, useState } from "react";
 import Head from "next/head";
 
 import { DefaultLayout } from "layouts";
-import { addLeadingZero, calculateFee, numberToBrCurrency } from "functions";
+import {
+  addLeadingZero,
+  calculateFee,
+  calculateTotal,
+  numberToBrCurrency,
+  romanToArabic,
+} from "functions";
 import { useForm, useFormDispatch } from "stores";
 import { Breadcrumb, Button, Input, OutlineButton, Select } from "components";
 
@@ -10,6 +16,7 @@ import styles from "styles/Form.module.css";
 
 import type { IPokemonsInput, IResponse } from "types";
 import { __VALUE_PER_POKEMON } from "constants/form";
+import { __ROMAN_NUMERALS } from "constants/numerals";
 
 interface IForm {
   data?: IResponse;
@@ -25,7 +32,7 @@ const Form = ({ data }: IForm) => {
     const fetchInputsData = async () => {
       const urls = [
         "http://localhost:3000/api/pokemon/location",
-        "http://localhost:3000/api/pokemon/pokemon",
+        "http://localhost:3000/api/pokemon/pokemons",
         "http://localhost:3000/api/pokemon/region",
         "http://localhost:3000/api/scheduling/date",
       ];
@@ -91,13 +98,17 @@ const Form = ({ data }: IForm) => {
   ) => {
     if (!dispatch) return;
 
+    if (name === "pokemon") {
+      updateGenerationByPokemon(Number(id), Number(name));
+    }
+
     dispatch({
       type: "CHANGE_SELECT",
       payload: { name: name, value: value, id: id },
     });
   };
 
-  const [setTimeLoading, setSetTimeLoading] = useState(false);
+  const [timeLoading, setTimeLoading] = useState(false);
   useEffect(() => {
     if (!dispatch) return;
 
@@ -123,18 +134,57 @@ const Form = ({ data }: IForm) => {
           payload: data,
         });
 
-        setSetTimeLoading(false);
+        setTimeLoading(false);
       } catch (error) {
-        setSetTimeLoading(false);
+        setTimeLoading(false);
         console.error("Error:", error);
       }
     };
 
     if (state.dateSelected) {
-      setSetTimeLoading(true);
+      setTimeLoading(true);
       fetchTimes();
     }
-  }, [state.dateSelected]);
+  }, []);
+
+  const [feeLoading, setFeeLoading] = useState(false);
+  const updateGenerationByPokemon = async (
+    pokemonId: number,
+    selectedId: number
+  ) => {
+    if (!dispatch) return;
+
+    try {
+      setFeeLoading(true);
+      const response = await fetch(
+        "http://localhost:3000/api/pokemon/generation",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            id: pokemonId,
+          }),
+        }
+      );
+
+      const data = await response.json();
+      const generation = data.split("-").slice(-1)[0].toUpperCase();
+
+      dispatch({
+        type: "SET_GENERATION",
+        payload: { generation: romanToArabic(generation) },
+      });
+
+      setFeeLoading(false);
+    } catch (error) {
+      setFeeLoading(false);
+      console.error("Error:", error);
+    }
+  };
+
+  console.log(state);
 
   return (
     <>
@@ -269,7 +319,7 @@ const Form = ({ data }: IForm) => {
                   )}
                 </span>
                 <span>Taxa geracional*:</span>
-                {/* <span>{calculateFee()}</span> */}
+                <span>{calculateFee(state.generation)}</span>
                 <span></span>
               </div>
 
@@ -279,7 +329,10 @@ const Form = ({ data }: IForm) => {
               </span>
 
               <div className={styles.total}>
-                <h2>Valor total: {numberToBrCurrency(210)}</h2>
+                <h2>
+                  Valor total:{" "}
+                  {calculateTotal(state.generation, state.pokemonsInput.length)}
+                </h2>
                 <Button onClick={() => {}}>Concluir Agendamento</Button>
               </div>
             </form>

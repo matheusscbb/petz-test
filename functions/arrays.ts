@@ -4,9 +4,9 @@ export const getLastItem = (array: Array<any>) => array.slice(-1);
 
 
 export const prepareOptions = (data: IResponse): IOptions[] =>
-    data.results?.map((r: any, idx: number) => ({
-        id: idx,
-        value: idx,
+    data?.results?.map((r: any, idx: number) => ({
+        id: idx + 1,
+        value: idx + 1,
         label: r.name,
     })) || [];
 
