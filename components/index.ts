@@ -10,3 +10,7 @@ export * from './Breadcrumb';
 export * from './Input';
 export * from './Select';
 
+export * from './ErrorLabel';
+
+export * from './WarningSchedule';
+

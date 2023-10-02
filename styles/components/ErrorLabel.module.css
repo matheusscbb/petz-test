@@ -1,0 +1,6 @@
+.errorLabel {
+    position: absolute;
+
+    font-size: .75rem;
+    color: var(--danger-color);
+}

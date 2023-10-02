@@ -9,7 +9,7 @@ type ErrorProps = {
 };
 
 type ErrorsProps = {
-  [key: number]: ErrorProps;
+  [key: number | string]: ErrorProps;
 };
 
 interface FormProps {
@@ -173,9 +173,16 @@ const reducer = (state: FormProps, action: any): FormProps => {
         default:
           break;
       }
+
       return {
         ...state,
         ...obj,
+      };
+
+    case "SET_ERROS":
+      return {
+        ...state,
+        errors: action?.payload,
       };
 
     case "SET_GENERATION":

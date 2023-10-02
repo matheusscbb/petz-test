@@ -1,0 +1,32 @@
+.warningScheduleContainer {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    border-radius: 8px;
+    border: 1px solid #DF8686;
+
+    margin-top: 10vh;
+    max-width: 408px;
+    padding: 0 35px 35px;
+    background-color: #DF86860A;
+}
+
+.warningScheduleTitle {
+    padding: 20px 0;
+
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: var(--black-ligth);
+}
+
+.warningScheduleText {
+    margin: 20px 0;
+
+    
+    font-weight: 400;
+    font-size: .875rem;
+    color: var(--gray-dark);
+}

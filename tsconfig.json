@@ -3,6 +3,7 @@
     "baseUrl": ".",
     "paths": {
       "@/components": ["components/index.ts"],
+      "@/containers": ["containers/index.ts"],
       "@/constants": ["constants/index.ts"],
       "@/layouts": ["layouts/index.ts"],
       "@/styles/*": ["styles/*"],

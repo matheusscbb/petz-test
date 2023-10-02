@@ -9,6 +9,7 @@
     padding: 14px;
     border-radius: 8px;
     border: 1px solid var(--gray);
+    color: var(--gray-dark);
 
     font-size: var(--input-font-size);
     outline: none;
@@ -29,7 +30,6 @@
     appearance: none;
 
     width: 100%;
-    color: var(--gray-dark);
     background-color: var(--white);
 }
   

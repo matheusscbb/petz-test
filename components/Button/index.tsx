@@ -2,11 +2,11 @@ import React from "react";
 
 import styles from "styles/components/Button.module.css";
 
-import type { ReactNode } from "react";
+import type { ButtonHTMLAttributes, ReactNode } from "react";
 
-interface IButton {
+interface IButton extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode;
-  onClick: () => void;
+  onClick?: () => void;
 }
 
 export const Button = ({ children, onClick }: IButton) => (
