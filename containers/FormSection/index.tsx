@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { useRouter } from "next/router";
 
 import { useForm, useFormDispatch } from "stores";
 
@@ -11,7 +10,15 @@ import {
   numberToBrCurrency,
   objectIsEmpty,
 } from "functions";
-import { Input, Button, Select, ErrorLabel, OutlineButton } from "components";
+import {
+  Input,
+  Button,
+  Select,
+  ErrorLabel,
+  OutlineButton,
+  SelectArea,
+  InputArea,
+} from "components";
 
 import { __VALUE_PER_POKEMON } from "constants/form";
 import { __ROMAN_NUMERALS } from "constants/numerals";
@@ -28,7 +35,6 @@ interface IForm {
 export const FormSection = ({ data, setPageStatus }: IForm) => {
   const state = useForm();
   const dispatch = useFormDispatch();
-  const router = useRouter();
 
   const addPokemonInputHandler = (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault();
@@ -210,45 +216,37 @@ export const FormSection = ({ data, setPageStatus }: IForm) => {
 
       <form className={styles.form} onSubmit={handleSubmit}>
         <div className={styles.personal}>
-          <div>
-            <label>Nome</label>
-            <Input
-              value={state.name}
-              placeholder="Nome"
-              onChange={(e) => textInputHandler(e.target.value, "name")}
-            />
-            <ErrorLabel>{state.errors.name}</ErrorLabel>
-          </div>
-          <div>
-            <label>Sobrenome</label>
-            <Input
-              value={state.surname}
-              placeholder="Sobrenome"
-              onChange={(e) => textInputHandler(e.target.value, "surname")}
-            />
-            <ErrorLabel>{state.errors.surname}</ErrorLabel>
-          </div>
+          <InputArea
+            label="Nome"
+            value={state.name}
+            placeholder="Nome"
+            onChange={(e) => textInputHandler(e.target.value, "name")}
+            error={state.errors.name}
+          />
+          <InputArea
+            label="Sobrenome"
+            value={state.surname}
+            placeholder="Sobrenome"
+            onChange={(e) => textInputHandler(e.target.value, "surname")}
+            error={state.errors.surname}
+          />
 
-          <div>
-            <label>Região</label>
-            <Select
-              value={state.regionSelected}
-              onChange={(e) => selectInputHandler(e.target.value, "region")}
-              options={state.region}
-              placeholder="Selecione sua região"
-            />
-            <ErrorLabel>{state.errors.regionSelected}</ErrorLabel>
-          </div>
-          <div>
-            <label>Cidade</label>
-            <Select
-              value={state.locationSelected}
-              onChange={(e) => selectInputHandler(e.target.value, "location")}
-              options={state.location}
-              placeholder="Selecione sua cidade"
-            />
-            <ErrorLabel>{state.errors.locationSelected}</ErrorLabel>
-          </div>
+          <SelectArea
+            options={state.region}
+            label="Região"
+            placeholder="Selecione sua região"
+            value={state.regionSelected}
+            error={state.errors.regionSelected}
+            onChange={(e) => selectInputHandler(e.target.value, "region")}
+          />
+          <SelectArea
+            options={state.region}
+            label="Cidade"
+            placeholder="Selecione sua cidade"
+            value={state.locationSelected}
+            error={state.errors.locationSelected}
+            onChange={(e) => selectInputHandler(e.target.value, "location")}
+          />
         </div>
 
         <div className={styles.pokemonsArea}>
@@ -260,7 +258,9 @@ export const FormSection = ({ data, setPageStatus }: IForm) => {
           {state.pokemonsInput.map((pokemons: IPokemonsInput, idx: number) => (
             <span key={`input-pokemons-${pokemons.id}`}>
               <div className={styles.pokemonsInputs}>
-                <label>Pokemon {addLeadingZero(pokemons.id)}</label>
+                <label className={styles.pokemonsLabel}>
+                  Pokemon {addLeadingZero(pokemons.id)}
+                </label>
                 <Select
                   value={state.pokemonSelected?.[pokemons.id] || null}
                   onChange={(e) =>
@@ -290,26 +290,22 @@ export const FormSection = ({ data, setPageStatus }: IForm) => {
         </OutlineButton>
 
         <div className={styles.personal}>
-          <div>
-            <label>Data para Atendimento</label>
-            <Select
-              value={state.dateSelected?.value}
-              onChange={(e) => selectInputHandler(e.target.value, "date")}
-              options={state.date}
-              placeholder="Selecione uma data"
-            />
-            <ErrorLabel>{state.errors.dateSelected}</ErrorLabel>
-          </div>
-          <div>
-            <label>Horário de Atendimento</label>
-            <Select
-              value={state.timeSelected?.value}
-              onChange={(e) => selectInputHandler(e.target.value, "time")}
-              options={state.time}
-              placeholder="Selecione um horário"
-            />
-            <ErrorLabel>{state.errors.timeSelected}</ErrorLabel>
-          </div>
+          <SelectArea
+            options={state.date}
+            label="Data para Atendimento"
+            placeholder="Selecione uma data"
+            value={state.dateSelected?.value}
+            error={state.errors.dateSelected}
+            onChange={(e) => selectInputHandler(e.target.value, "date")}
+          />
+          <SelectArea
+            options={state.time}
+            label="Horário de Atendimento"
+            placeholder="Selecione um horário"
+            value={state.timeSelected?.value}
+            error={state.errors.timeSelected}
+            onChange={(e) => selectInputHandler(e.target.value, "time")}
+          />
         </div>
 
         <div className={styles.separador} />

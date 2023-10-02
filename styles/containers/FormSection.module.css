@@ -25,11 +25,12 @@
     grid-template-columns: repeat(2, 1fr);
 }
 
-.personal label, .pokemonsArea h5 {
+.pokemonsLabel {
     display: block;
     font-weight: 700;
     font-size: .875rem;
     padding-bottom: 8px;
+    margin-right: 38px;
 }
 
 .plus {
@@ -53,10 +54,6 @@
     justify-content: center;
 
     padding-bottom: var(--gap-size);
-}
-
-.pokemonsInputs label {
-    margin-right: 38px;
 }
 
 .pokemonsInputs div {

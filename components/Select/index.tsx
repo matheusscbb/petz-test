@@ -1,7 +1,7 @@
 import styles from "styles/components/Input.module.css";
 import type { IOptions } from "types";
 
-interface SelectProps {
+export interface SelectProps {
   value: string | null;
   placeholder?: string;
   options?: IOptions[];
