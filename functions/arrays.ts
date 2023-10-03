@@ -11,8 +11,8 @@ export const prepareOptions = (data: IResponse): IOptions[] =>
     })) || [];
 
 export const prepareDate = (data: string[]): IOptions[] =>
-    data?.map((d: string, idx: number) => ({
+    data.map((d: string, idx: number) => ({
         id: idx + 1,
         value: idx + 1,
         label: d,
-    })) || [];
+    }));
