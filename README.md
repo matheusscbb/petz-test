@@ -45,3 +45,11 @@ Optei por não utilizar esta funcionalidade, uma vez que, de acordo com as métr
 ## Components
 
 Com um design guide, seria possível criar componentes mais robustos. Por exemplo, botões que abrangem uma variedade maior de cenários e inputs combinados com labels. No entanto, optei por manter as coisas simples neste caso.
+
+## Gerações dos Pokemons
+
+Pode ter sido falha minha, porém só consegui retorno para primeira geração.
+
+## Selects
+
+No final tive um tempo extra para finalizar o projeto, mas atuei na parte de testes e lógica, acabei deixando o estilo correto do select para o final e fiquei sem tempo.

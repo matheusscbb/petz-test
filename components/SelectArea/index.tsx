@@ -9,6 +9,7 @@ import styles from "styles/components/Select.module.css";
 interface ISelectArea extends SelectProps {
   error: string | undefined | null;
   label: string;
+  disabled?: boolean;
 }
 
 export const SelectArea = ({
@@ -17,12 +18,14 @@ export const SelectArea = ({
   value,
   options,
   onChange,
+  disabled,
   placeholder,
 }: ISelectArea) => (
   <div>
     <label className={styles.label}>{label}</label>
 
     <Select
+      disabled={disabled}
       value={value}
       options={options}
       onChange={onChange}

@@ -4,20 +4,19 @@ import { useForm, useFormDispatch } from "stores";
 
 import {
   calculateFee,
-  romanToArabic,
-  calculateTotal,
-  addLeadingZero,
-  numberToBrCurrency,
   objectIsEmpty,
+  romanToArabic,
+  addLeadingZero,
+  calculateTotal,
+  numberToBrCurrency,
 } from "functions";
 import {
-  Input,
   Button,
   Select,
+  InputArea,
+  SelectArea,
   ErrorLabel,
   OutlineButton,
-  SelectArea,
-  InputArea,
 } from "components";
 
 import { __VALUE_PER_POKEMON } from "constants/form";
@@ -299,6 +298,7 @@ export const FormSection = ({ data, setPageStatus }: IForm) => {
             onChange={(e) => selectInputHandler(e.target.value, "date")}
           />
           <SelectArea
+            disabled={!state.time}
             options={state.time}
             label="Horário de Atendimento"
             placeholder="Selecione um horário"

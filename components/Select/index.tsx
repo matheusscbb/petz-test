@@ -1,21 +1,28 @@
+import { HTMLAttributes } from "react";
+
 import styles from "styles/components/Input.module.css";
+
 import type { IOptions } from "types";
 
-export interface SelectProps {
+export interface SelectProps extends HTMLAttributes<HTMLElement> {
   value: string | null;
   placeholder?: string;
   options?: IOptions[];
+  disabled?: boolean;
   onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
 }
 
 export const Select = ({
   value,
-  onChange,
   options,
+  onChange,
+  disabled,
   placeholder,
+  ...props
 }: SelectProps) => (
-  <div className={styles.selectContainer}>
+  <div className={styles.selectContainer} {...props}>
     <select
+      disabled={disabled}
       onChange={onChange}
       className={styles.select}
       value={value || "NULL_CASE"}
